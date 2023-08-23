@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.service.CarService;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/cars")
 public class CarsController {
@@ -24,10 +26,10 @@ public class CarsController {
     }*/
 
     @GetMapping
-    public String getCars(@RequestParam(name = "count", required = false) String count,  ModelMap model) {
-        if (count != null) {
-            model.addAttribute("carlist", carService.getSomeCars(Long.parseLong(count)));
-        } else model.addAttribute("carlist", carService.getAllCars());
+    public String getCars(@RequestParam("count") Optional<Long> id, ModelMap model) {
+        if (id.isEmpty()) {
+            model.addAttribute("carlist", carService.getAllCars());
+        } else model.addAttribute("carlist", carService.getSomeCars(id.orElse(5L)));
         return "cars/cars";
     }
 }

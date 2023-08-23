@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface CarService {
 
-    public List<Car> getAllCars();
+    List<Car> getAllCars();
 
-    public List<Car> getSomeCars(Long size);
+    List<Car> getSomeCars(Long id);
 
 }
