@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PP_2_2_2</title>
+    <title>Cars</title>
 </head>
 <body>
 <div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
+    <th:block th:each="car : ${carlist}">
+        <p th:text="'Car name: '+ ${car.model} + '. Serial: ' + ${car.serial}+ '. Car type: ' +${car.type}+ '.'"></p>
     </th:block>
 </div>
 </body>
