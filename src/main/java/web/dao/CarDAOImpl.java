@@ -20,13 +20,13 @@ public class CarDAOImpl implements CarDAO {
         carList.add(new Car("VW", 587, "van"));
         carList.add(new Car("Delage", 777, "retro-car"));
     }
-    @Override
-    public List<Car> getAllCars() {
-        return carList;
-    }
 
     @Override
     public List<Car> getSomeCars(Long id) {
         return carList.stream().limit(id).collect(Collectors.toList());
+    }
+
+    public Long getSize(){
+        return (long) carList.size();
     }
 }

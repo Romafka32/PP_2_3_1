@@ -21,9 +21,7 @@ public class CarsController {
 
     @GetMapping
     public String getCars(@RequestParam("count") Optional<Long> id, ModelMap model) {
-        if (id.isEmpty()) {
-            model.addAttribute("carlist", carService.getAllCars());
-        } else model.addAttribute("carlist", carService.getSomeCars(id.orElse(5L)));
+        model.addAttribute("carlist", carService.getSomeCars(id.orElse(carService.getSize())));
         return "cars/cars";
     }
 }
