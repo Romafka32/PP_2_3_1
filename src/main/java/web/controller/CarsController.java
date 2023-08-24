@@ -19,12 +19,6 @@ public class CarsController {
         this.carService = carService;
     }
 
-    /*@GetMapping
-    public String getAllCars(ModelMap model) {
-        model.addAttribute("carlist", carService.getAllCars());
-        return "cars/cars";
-    }*/
-
     @GetMapping
     public String getCars(@RequestParam("count") Optional<Long> id, ModelMap model) {
         if (id.isEmpty()) {
