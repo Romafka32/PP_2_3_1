@@ -16,13 +16,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(String name, String lastName, byte age) {
-
+    @Transactional
+    public void createUser(User user) {
+        userDAO.createUser(user);
     }
 
     @Override
-    public void removeUserById(long id) {
+    @Transactional
+    public void updateUser(Long id,User user) {
+        userDAO.updateUser(id, user);
+    }
 
+    @Override
+    @Transactional(readOnly = true)
+    public User getOneUser(Long id) {
+        return userDAO.getOneUser(id);
+    }
+
+    @Override
+    @Transactional
+    public void removeUserById(long id) {
+        userDAO.removeUser(id);
     }
 
     @Override

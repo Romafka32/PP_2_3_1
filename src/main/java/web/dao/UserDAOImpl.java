@@ -19,7 +19,27 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Long getSize() {
-        return null;
+    public void createUser(User user) {
+        entityManager.persist(user);
+    }
+
+    @Override
+    public void updateUser(Long id, User updatedUser) {
+        User user = getOneUser(id);
+        user.setFirstName(updatedUser.getFirstName());
+        user.setLastName(updatedUser.getLastName());
+        user.setEmail(updatedUser.getEmail());
+        entityManager.merge(user);
+    }
+
+    @Override
+    public void removeUser(Long id) {
+        User user = getOneUser(id);
+        entityManager.remove(user);
+    }
+
+    @Override
+    public User getOneUser(Long id) {
+        return entityManager.createQuery("select u from User u where id = :id", User.class).setParameter("id",id).getSingleResult();
     }
 }
