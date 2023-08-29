@@ -12,7 +12,7 @@ public class UsersController {
 
     UserService userService;
 
-    public UsersController(UserService userService) {
+    private UsersController(UserService userService) {
         this.userService = userService;
     }
 
