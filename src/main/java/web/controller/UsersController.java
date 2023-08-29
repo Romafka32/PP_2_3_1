@@ -10,9 +10,9 @@ import web.service.UserService;
 @RequestMapping("/")
 public class UsersController {
 
-    UserService userService;
+    private final UserService userService;
 
-    private UsersController(UserService userService) {
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
 
